@@ -11,7 +11,7 @@ import {
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, COMPOSITION_BUFFER_MODE } from '@angular/forms';
 import { ɵgetDOM as getDOM } from '@angular/platform-browser';
 import { createTextMaskInputElement } from 'text-mask-core/dist/textMaskCore';
-import { mask, clean } from './utils';
+import { maskKoreanLocal, clean } from './utils';
 
 export class TextMaskConfig {
 	mask: Array<string | RegExp> | ((raw: string) => Array<string | RegExp>) | false;
@@ -50,7 +50,7 @@ export class NgxPhoneMaskDirective implements ControlValueAccessor, OnChanges, O
 	@Input() clean = true;
 
 	textMaskConfig: TextMaskConfig = {
-		mask: mask(),
+		mask: maskKoreanLocal(),
 		guide: false,
 		placeholderChar: '_',
 		pipe: undefined,

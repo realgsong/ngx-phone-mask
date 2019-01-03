@@ -12,3 +12,17 @@ export const mask = () => (rawValue) => {
 	return ['+', /[1-9]/, ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, '-', /\d/, /\d/];
 
 };
+
+export const maskKoreanLocal = () => (rawValue) => {
+    let cleaned = clean(rawValue);
+    if (cleaned.startsWith('02')) {
+        if (cleaned.length < 10) {
+            return [/\d/, /\d/, '-', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+        }
+        return [/\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+    }
+    if (cleaned.length < 11) {
+        return [/\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+    }
+    return [/\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+};

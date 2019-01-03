@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { conformToMask } from 'angular2-text-mask';
-import { mask } from './utils';
+import { maskKoreanLocal } from './utils';
 
 @Pipe({
 	name: 'ngxPhoneMask'
@@ -14,7 +14,7 @@ export class NgxPhoneMaskPipe implements PipeTransform {
 
 		return conformToMask(
 			value,
-			mask(),
+			maskKoreanLocal(),
 			{ guide: false }
 		).conformedValue;
 	}
